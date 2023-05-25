@@ -62,39 +62,54 @@ cardBtn.addEventListener('click', () => {
 });
 
 
-// const styleGroup = () => {
-//   if (randomThree() === 0) {
-//     span.classList.add('newspaper');
-//   } else if (randomThree() === 1) {
-//     span.classList.add('magazine1');
-//   } else {
-//     span.classList.add('magazine2');
-//   }
-// };
+const styleGroup = () => {
+  if (randomThree() === 0) {
+    span.classList.add('newspaper');
+  } else if (randomThree() === 1) {
+    span.classList.add('magazine1');
+  } else {
+    span.classList.add('magazine2');
+  }
+};
 
-// const sizeGroup = () => {
-//   if (randomThree() === 0) {
-//     span.classList.add('medium');
-//   } else if (randomThree() === 1) {
-//     span.classList.add('big');
-//   } else {
-//     span.classList.add('reallybig');
-//   }
-// };
+const sizeGroup = () => {
+  if (randomThree() === 0) {
+    span.classList.add('medium');
+  } else if (randomThree() === 1) {
+    span.classList.add('big');
+  } else {
+    span.classList.add('reallybig');
+  }
+};
 
-// const rotateGroup = () => {
-//   if (randomTwo() === 0) {
-//     span.classList.add('rotateleft');
-//   } else {
-//     span.classList.add('rotateright');
-//   }
-// };
+const rotateGroup = () => {
+  if (randomTwo() === 0) {
+    span.classList.add('rotateleft');
+  } else {
+    span.classList.add('rotateright');
+  }
+};
 
-// const skewGroup = () => {
-//   if (randomTwo() === 0) {
-//     span.classList.add('skewleft');
-//   } else {
-//     span.classList.add('skewright');
-//   }
-// };
+const skewGroup = () => {
+  if (randomTwo() === 0) {
+    span.classList.add('skewleft');
+  } else {
+    span.classList.add('skewright');
+  }
+};
 
+cartaGerada.addEventListener('click', (event) => {
+  if (randomThree() === 0) {
+    event.target.classList.remove('big');
+    event.target.classList.remove('reallybig');
+    event.target.classList.add('medium');
+  } else if (randomThree() === 1) {
+    event.target.classList.remove('medium');
+    event.target.classList.remove('reallybig');
+    event.target.classList.add('big');
+  } else {
+    event.target.classList.remove('big');
+    event.target.classList.remove('medium');
+    event.target.classList.add('reallybig');
+  }
+});
