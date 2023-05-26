@@ -1,3 +1,7 @@
+#carta-gerada {
+  display: flex;
+}
+
 .newspaper {
   background-color: rgb(250, 235, 215);
   font-family: 'Times New Roman';
@@ -34,18 +38,19 @@
   padding: 15px;
 }
 
-.rotateleft {
-  transform: rotate(-5deg);
+.rotateleft.skewleft {
+  transform: rotate(-5deg) skewX(10deg);
+}
+.rotateleft.skewright {
+  transform: rotate(-5deg) skewX(-10deg);
+}
+.rotateright.skewleft {
+  transform: rotate(5deg) skewX(10deg);
 }
 
-.rotateright {
-  transform: rotate(5deg);
+.rotateright.skewright {
+  transform: rotate(5deg) skewX(-10deg);
 }
-
-.skewleft {
-  transform: skewX(10deg);
-}
-
-.skewright {
-  transform: skewX(-10deg);
+span {
+  align-self: center;
 }

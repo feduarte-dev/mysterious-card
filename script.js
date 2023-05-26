@@ -4,20 +4,15 @@ const cardBtn = document.getElementById('criar-carta');
 const contador = document.getElementById('carta-contador');
 const contapalavra = document.getElementsByTagName('span');
 
-const randomThree = () => {
-  return Math.floor(Math.random() * 3);
-};
+const randomThree = () => Math.floor(Math.random() * 3);
 
-const randomTwo = () => {
-  return Math.floor(Math.random() * 2);
-};
+const randomTwo = () => Math.floor(Math.random() * 2);
 
 const count = () => {
   contador.innerText = contapalavra.length;
 };
-
-
-cardBtn.addEventListener('click', () => {
+// Função refatorada com ajuda da Nat
+const functionMainGenerateCards = (styleFn, sizeFn, rotateFn, skewFn) => {
   if (inputText.value === '' || inputText.value === ' ') {
     cartaGerada.innerText = 'Por favor, digite o conteúdo da carta.';
   } else {
@@ -26,43 +21,18 @@ cardBtn.addEventListener('click', () => {
     cartaGerada.innerText = '';
     for (let index = 0; index < cardArray.length; index += 1) {
       const span = document.createElement('span');
-      
-      if (randomThree() === 0) {
-        span.classList.add('newspaper');
-      } else if (randomThree() === 1) {
-        span.classList.add('magazine1');
-      } else {
-        span.classList.add('magazine2');
-      }
-
-      if (randomThree() === 0) {
-        span.classList.add('medium');
-      } else if (randomThree() === 1) {
-        span.classList.add('big');
-      } else {
-        span.classList.add('reallybig');
-      }
-
-      if (randomTwo() === 0) {
-        span.classList.add('rotateleft');
-      } else {
-        span.classList.add('rotateright');
-      }
-
-      if (randomTwo() === 0) {
-        span.classList.add('skewleft');
-      } else {
-        span.classList.add('skewright');
-      }
-
+      styleFn(span);
+      sizeFn(span);
+      rotateFn(span);
+      skewFn(span);
       span.innerText = cardArray[index];
       cartaGerada.appendChild(span);
     }
-  } count();
-});
+  }
+  count();
+};
 
-
-const styleGroup = () => {
+const styleGroup = (span) => {
   if (randomThree() === 0) {
     span.classList.add('newspaper');
   } else if (randomThree() === 1) {
@@ -72,7 +42,7 @@ const styleGroup = () => {
   }
 };
 
-const sizeGroup = () => {
+const sizeGroup = (span) => {
   if (randomThree() === 0) {
     span.classList.add('medium');
   } else if (randomThree() === 1) {
@@ -82,7 +52,7 @@ const sizeGroup = () => {
   }
 };
 
-const rotateGroup = () => {
+const rotateGroup = (span) => {
   if (randomTwo() === 0) {
     span.classList.add('rotateleft');
   } else {
@@ -90,13 +60,17 @@ const rotateGroup = () => {
   }
 };
 
-const skewGroup = () => {
+const skewGroup = (span) => {
   if (randomTwo() === 0) {
     span.classList.add('skewleft');
   } else {
     span.classList.add('skewright');
   }
 };
+
+cardBtn.addEventListener('click', () => {
+  functionMainGenerateCards(styleGroup, sizeGroup, rotateGroup, skewGroup);
+});
 
 cartaGerada.addEventListener('click', (event) => {
   if (randomThree() === 0) {
